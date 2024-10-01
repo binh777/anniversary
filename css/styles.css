@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.container {
+    position: relative;
+    width: 300px; /* Container width */
+    height: 300px; /* Container height */
+}
+
+.envelope {
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative; /* Relative positioning for the envelope */
+    overflow: hidden; /* Hide the overflowing content initially */
+}
+
+.heart {
+    font-size: 3rem; /* Heart size */
+}
+
+.letter {
+    position: absolute;
+    width: 80%; /* Initial width */
+    height: 50%; /* Initial height */
+    background: white; /* White background */
+    top: 100%; /* Position out of view initially */
+    left: 10%; /* Center it horizontally */
+    opacity: 0; /* Initially hide the letter */
+    visibility: hidden; /* Ensure it's non-interactive */
+    padding: 20px; /* Padding */
+    box-sizing: border-box; /* Include padding in width/height */
+    transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
+    overflow-y: auto; /* Allow content to scroll */
+    font-size: 16px; /* Font size */
+}
+
+.letter.open {
+    width: 100%; /* Expanded width */
+    height: 80%; /* Expanded height */
+    top: 10%; /* Bring into view */
+    left: 0; /* Align left */
+    opacity: 1; /* Make visible */
+    visibility: visible; /* Ensure it's interactive */
+}
+
+.hearts {
+    position: absolute;
+    font-size: 2rem; /* Heart size */
+    color: red;
+    animation: scatter 2s forwards;
+}
+
+.cat {
+    position: absolute;
+    width: 50px; /* Small cat width */
+    height: 50px; /* Small cat height */
+    background-image: url('../cat.png'); /* Path to cat image */
+    background-size: cover; /* Ensure the image covers the element */
+    background-repeat: no-repeat;
+}
+
+@keyframes scatter {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(var(--x), var(--y));
+    }
+}
