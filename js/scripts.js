@@ -25,14 +25,25 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => heart.remove(), 2000);
         }
 
+        // Get the envelope's dimensions and position
+        const envelope = document.getElementById('envelope');
+        const envelopeRect = envelope.getBoundingClientRect();
+
         // Create small cats scattering effect
         for (let i = 0; i < 20; i++) {
             let cat = document.createElement('div');
             cat.classList.add('cat');
 
-            // Randomly position the cats around the screen
-            let x = Math.random() * window.innerWidth;
-            let y = Math.random() * window.innerHeight;
+            let x, y;
+            do {
+                x = Math.random() * window.innerWidth;
+                y = Math.random() * window.innerHeight;
+            } while (
+                x >= envelopeRect.left && x <= envelopeRect.right &&
+                y >= envelopeRect.top && y <= envelopeRect.bottom
+            );
+
+            // Set the position of the cat
             cat.style.left = `${x}px`;
             cat.style.top = `${y}px`;
 
